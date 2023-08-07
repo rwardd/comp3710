@@ -4,26 +4,30 @@ import matplotlib.pyplot as plt
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-Y, X = np.mgrid[-0.3:0:0.0001, -1:-0.5:0.0001]
+WIDTH = 1000
+HEIGHT = 1000
 
-x = torch.Tensor(X)
-y = torch.Tensor(Y)
-z = torch.complex(x, y) #important!
-zs = torch.zeros_like(z)
-ns = torch.zeros_like(z)
-
-z = z.to(device)
-zs = zs.to(device)
+x = 0
+y = 0
+ns = torch.zeros((WIDTH, HEIGHT))
 ns = ns.to(device)
+for i in range(0, 10000):
+    r = torch.rand(1)
+    if r < 0.1:
+        x = 0.0 
+        y = 0.16 * y
+    elif r < 0.86:
+        x = 0.85 * x + 0.04 * y
+        y = -0.04 * x + 0.85 * y + 1.6
+    elif r < 0.93:
+        x = 0.2 * x - 0.26 * y 
+        y = 0.23 * x + 0.22 * y + 1.6
+    else:
+        x = -0.15 * x + 0.22 * y
+        y = 0.26 * x + 0.24 * y + 0.44
+    iy, ix = int(WIDTH/ 2 + x * WIDTH/ 10), int(y * HEIGHT/ 12)
+    ns[ix, iy] = 1
 
-for i in range(200):
-    #Compute the new values of z: z^2 + x
-    zs_ = zs*zs + z
-    #Have we diverged with this new value?
-    not_diverged = torch.abs(zs_) < 4.0
-    #Update variables to compute
-    ns += not_diverged.type(torch.FloatTensor)  #type: ignore
-    zs = zs_
 
 #plot
 fig = plt.figure(figsize=(16,10))
@@ -40,6 +44,7 @@ def processFractal(a):
     a = np.uint8(np.clip(a, 0, 255))
     return a
 
-plt.imshow(processFractal(ns.numpy()))
+ns = ns.numpy()
+plt.imshow(ns[::-1, :])
 plt.tight_layout(pad=0)
 plt.show()

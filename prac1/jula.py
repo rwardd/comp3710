@@ -19,7 +19,7 @@ ns = ns.to(device)
 c = -0.74543 + 0.11301 * 1j
 
 for i in range(200):
-    #Compute the new values of z: z^2 + x
+    #Compute the new values of z = z^2 + c
     z = z ** 2 + c
     #Have we diverged with this new value?
     not_diverged = torch.abs(z) < np.inf

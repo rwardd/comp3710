@@ -34,7 +34,7 @@ print("n_classes: %d" % n_classes)
 # Split into a training set and a test set using a stratified k fold
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)# Compute a PCA
 #normalise
-device = torch.device("mps")
+device = torch.device("cuda")
 X_train = torch.from_numpy(X_train)
 X_test = torch.from_numpy(X_test)
 y_train = torch.from_numpy(y_train)
@@ -53,7 +53,7 @@ class Net(nn.Module):
         super().__init__()
         self.conv1 = nn.Conv2d(1, 32, kernel_size=(3, 3))
         self.conv2 = nn.Conv2d(32, 64, kernel_size=(3, 3))
-        self.fc1 = nn.Linear(4928, 100)
+        self.fc1 = nn.Linear(4928, 7)
 
     def forward(self, x):
         x = torch.relu(F.max_pool2d(self.conv1(x),2))
@@ -64,33 +64,38 @@ class Net(nn.Module):
 
 
 net = Net()
-net.to(device)
+net.cuda()
 print(net)
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(net.parameters(), lr=0.1)
-criterion.to(device)
+optimizer = optim.Adam(net.parameters(), lr=0.0001)
 
-
+net.train()
 for epoch in range(2):
-    running_loss = 0.0 
+    running_loss = 0.0
     for i, data in enumerate(X_train, 0):
-        labels = y_train
-        optimizer.zero_grad()
-        outputs = net(X_train)
+        labels = y_train.cuda()
+        outputs = net(X_train.cuda())
         loss = criterion(outputs, labels)
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        print(i)
         running_loss += loss.item()
-        if i % 2000 == 1999:
+        if i % 100 == 1:
             print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2000:.3f}')
             running_loss = 0.0
 
-print('Finished Training')
+net.eval()
+with torch.no_grad():
+    correct = 0
+    total = 0
+    for i, data in enumerate(X_test, 0):
+        labels = y_test.cuda()
+        outputs = net(X_test.cuda())
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+    print("Test Accuracy: {} %".format(100 * correct / total))
 
-
-
-        
 
 
 

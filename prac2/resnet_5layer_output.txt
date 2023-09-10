@@ -1,0 +1,207 @@
+Files already downloaded and verified
+Files already downloaded and verified
+Net1(
+  (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (layer5): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(512, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(1024, 1024, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (linear): Linear(in_features=1024, out_features=10, bias=True)
+)
+Starting Training
+Epoch [1/35], Step [100/391] Loss: 1.49824
+Epoch [1/35], Step [200/391] Loss: 1.45385
+Epoch [1/35], Step [300/391] Loss: 1.28548
+Epoch [2/35], Step [100/391] Loss: 0.99979
+Epoch [2/35], Step [200/391] Loss: 0.97080
+Epoch [2/35], Step [300/391] Loss: 1.14869
+Epoch [3/35], Step [100/391] Loss: 1.12812
+Epoch [3/35], Step [200/391] Loss: 0.80596
+Epoch [3/35], Step [300/391] Loss: 0.69706
+Epoch [4/35], Step [100/391] Loss: 0.77528
+Epoch [4/35], Step [200/391] Loss: 0.65927
+Epoch [4/35], Step [300/391] Loss: 0.56842
+Epoch [5/35], Step [100/391] Loss: 0.71506
+Epoch [5/35], Step [200/391] Loss: 0.86043
+Epoch [5/35], Step [300/391] Loss: 0.97712
+Epoch [6/35], Step [100/391] Loss: 0.78869
+Epoch [6/35], Step [200/391] Loss: 0.50542
+Epoch [6/35], Step [300/391] Loss: 0.40833
+Epoch [7/35], Step [100/391] Loss: 0.64960
+Epoch [7/35], Step [200/391] Loss: 0.48817
+Epoch [7/35], Step [300/391] Loss: 0.42940
+Epoch [8/35], Step [100/391] Loss: 0.49617
+Epoch [8/35], Step [200/391] Loss: 0.43403
+Epoch [8/35], Step [300/391] Loss: 0.48186
+Epoch [9/35], Step [100/391] Loss: 0.56888
+Epoch [9/35], Step [200/391] Loss: 0.45260
+Epoch [9/35], Step [300/391] Loss: 0.39702
+Epoch [10/35], Step [100/391] Loss: 0.39133
+Epoch [10/35], Step [200/391] Loss: 0.52339
+Epoch [10/35], Step [300/391] Loss: 0.43955
+Epoch [11/35], Step [100/391] Loss: 0.38602
+Epoch [11/35], Step [200/391] Loss: 0.34987
+Epoch [11/35], Step [300/391] Loss: 0.32327
+Epoch [12/35], Step [100/391] Loss: 0.33332
+Epoch [12/35], Step [200/391] Loss: 0.43249
+Epoch [12/35], Step [300/391] Loss: 0.41024
+Epoch [13/35], Step [100/391] Loss: 0.39035
+Epoch [13/35], Step [200/391] Loss: 0.41640
+Epoch [13/35], Step [300/391] Loss: 0.59196
+Epoch [14/35], Step [100/391] Loss: 0.38003
+Epoch [14/35], Step [200/391] Loss: 0.55823
+Epoch [14/35], Step [300/391] Loss: 0.37420
+Epoch [15/35], Step [100/391] Loss: 0.24285
+Epoch [15/35], Step [200/391] Loss: 0.39634
+Epoch [15/35], Step [300/391] Loss: 0.31149
+Epoch [16/35], Step [100/391] Loss: 0.35460
+Epoch [16/35], Step [200/391] Loss: 0.33403
+Epoch [16/35], Step [300/391] Loss: 0.24699
+Epoch [17/35], Step [100/391] Loss: 0.32335
+Epoch [17/35], Step [200/391] Loss: 0.35597
+Epoch [17/35], Step [300/391] Loss: 0.22951
+Epoch [18/35], Step [100/391] Loss: 0.34078
+Epoch [18/35], Step [200/391] Loss: 0.23052
+Epoch [18/35], Step [300/391] Loss: 0.24388
+Epoch [19/35], Step [100/391] Loss: 0.40880
+Epoch [19/35], Step [200/391] Loss: 0.30253
+Epoch [19/35], Step [300/391] Loss: 0.26873
+Epoch [20/35], Step [100/391] Loss: 0.30841
+Epoch [20/35], Step [200/391] Loss: 0.18183
+Epoch [20/35], Step [300/391] Loss: 0.23299
+Epoch [21/35], Step [100/391] Loss: 0.23883
+Epoch [21/35], Step [200/391] Loss: 0.33331
+Epoch [21/35], Step [300/391] Loss: 0.19584
+Epoch [22/35], Step [100/391] Loss: 0.30572
+Epoch [22/35], Step [200/391] Loss: 0.31894
+Epoch [22/35], Step [300/391] Loss: 0.43726
+Epoch [23/35], Step [100/391] Loss: 0.24922
+Epoch [23/35], Step [200/391] Loss: 0.23281
+Epoch [23/35], Step [300/391] Loss: 0.30627
+Epoch [24/35], Step [100/391] Loss: 0.27960
+Epoch [24/35], Step [200/391] Loss: 0.19229
+Epoch [24/35], Step [300/391] Loss: 0.16553
+Epoch [25/35], Step [100/391] Loss: 0.23614
+Epoch [25/35], Step [200/391] Loss: 0.23036
+Epoch [25/35], Step [300/391] Loss: 0.24251
+Epoch [26/35], Step [100/391] Loss: 0.19565
+Epoch [26/35], Step [200/391] Loss: 0.18682
+Epoch [26/35], Step [300/391] Loss: 0.14682
+Epoch [27/35], Step [100/391] Loss: 0.22625
+Epoch [27/35], Step [200/391] Loss: 0.21690
+Epoch [27/35], Step [300/391] Loss: 0.11203
+Epoch [28/35], Step [100/391] Loss: 0.18085
+Epoch [28/35], Step [200/391] Loss: 0.08859
+Epoch [28/35], Step [300/391] Loss: 0.16759
+Epoch [29/35], Step [100/391] Loss: 0.13511
+Epoch [29/35], Step [200/391] Loss: 0.10864
+Epoch [29/35], Step [300/391] Loss: 0.19191
+Epoch [30/35], Step [100/391] Loss: 0.15818
+Epoch [30/35], Step [200/391] Loss: 0.08628
+Epoch [30/35], Step [300/391] Loss: 0.06098
+Epoch [31/35], Step [100/391] Loss: 0.04651
+Epoch [31/35], Step [200/391] Loss: 0.05864
+Epoch [31/35], Step [300/391] Loss: 0.20906
+Epoch [32/35], Step [100/391] Loss: 0.05121
+Epoch [32/35], Step [200/391] Loss: 0.04793
+Epoch [32/35], Step [300/391] Loss: 0.07115
+Epoch [33/35], Step [100/391] Loss: 0.05266
+Epoch [33/35], Step [200/391] Loss: 0.02381
+Epoch [33/35], Step [300/391] Loss: 0.05364
+Epoch [34/35], Step [100/391] Loss: 0.01892
+Epoch [34/35], Step [200/391] Loss: 0.03554
+Epoch [34/35], Step [300/391] Loss: 0.00729
+Epoch [35/35], Step [100/391] Loss: 0.01476
+Epoch [35/35], Step [200/391] Loss: 0.00832
+Epoch [35/35], Step [300/391] Loss: 0.01545
+Finished Training, took 1375.2393219470978 secs or 22.920655365784963 mins.
+Accuracy of the network on the 10000 test images: 93.85 %, time taken: 2.654155731201172

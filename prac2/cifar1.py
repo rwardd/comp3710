@@ -69,7 +69,8 @@ class Net1(nn.Module):
         self.layer2 = self._make_layer(block, 128, num_blocks[1], stride=2)
         self.layer3 = self._make_layer(block, 256, num_blocks[2], stride=2)
         self.layer4 = self._make_layer(block, 512, num_blocks[3], stride=2)
-        self.linear = nn.Linear(512*block.expansion, num_classes)
+        self.layer5 = self._make_layer(block, 1024, num_blocks[4], stride=1)
+        self.linear = nn.Linear(1024*block.expansion, num_classes)
 
     def _make_layer(self, block, planes, num_blocks, stride):
         strides = [stride] + [1]*(num_blocks-1)
@@ -86,6 +87,7 @@ class Net1(nn.Module):
         out = self.layer2(out)
         out = self.layer3(out)
         out = self.layer4(out)
+        out = self.layer5(out)
         out = F.avg_pool2d(out, 4)
         out = out.view(out.size(0), -1)
         out = self.linear(out)
@@ -112,7 +114,7 @@ class Net(nn.Module):
 
 
 #net = Net()
-net = Net1(BasicBlock, [2, 2, 2, 2])
+net = Net1(BasicBlock, [2, 2, 2, 2, 2])
 #net = Net1(BasicBlock, [3, 4, 6, 3])
 print(net)
 net.to(device)

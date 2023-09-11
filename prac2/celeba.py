@@ -91,10 +91,13 @@ class GAN(nn.Module):
         blocks.append(nn.Sigmoid())
         return nn.Sequential(*blocks)
 
+# Create a sample directory to store images through training
 sample_dir = 'generated_run3'
 os.makedirs(sample_dir, exist_ok=True)
 
+
 def save_samples(index, latent_tensors, show=True):
+    """Helper function to save images"""
     fake_images = net.generator(latent_tensors)
     fake_fname = 'images-{0:0=4d}.png'.format(index)
     save_image(denorm(fake_images), os.path.join(sample_dir, fake_fname), nrow=8)
@@ -105,10 +108,12 @@ def save_samples(index, latent_tensors, show=True):
         ax.imshow(make_grid(fake_images.cpu().detach(), nrow=8).permute(1, 2, 0))
         plt.show()
 
+# Generator latent space
 fixed_latent = torch.randn(64, latent_size, 1, 1, device=device)
 
 
 def fit(net, epochs, lr, start_index):
+    """Training method for the GAN"""
     torch.cuda.empty_cache()
 
     # Training data
@@ -193,6 +198,7 @@ def fit(net, epochs, lr, start_index):
 
 
     return losses_generator, losses_discriminator, real_scores, fake_scores
+
 
 net = GAN()
 net = net.to(device)

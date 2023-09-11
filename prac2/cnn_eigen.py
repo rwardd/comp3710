@@ -34,7 +34,7 @@ print("n_classes: %d" % n_classes)
 # Split into a training set and a test set using a stratified k fold
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)# Compute a PCA
 #normalise
-device = torch.device("cuda")
+device = torch.device("mps")
 X_train = torch.from_numpy(X_train)
 X_test = torch.from_numpy(X_test)
 y_train = torch.from_numpy(y_train)
@@ -64,7 +64,7 @@ class Net(nn.Module):
 
 
 net = Net()
-net.cuda()
+net.to(device)
 print(net)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(net.parameters(), lr=0.0001)
@@ -73,8 +73,8 @@ net.train()
 for epoch in range(2):
     running_loss = 0.0
     for i, data in enumerate(X_train, 0):
-        labels = y_train.cuda()
-        outputs = net(X_train.cuda())
+        labels = y_train.to(device)
+        outputs = net(X_train.to(device))
         loss = criterion(outputs, labels)
         optimizer.zero_grad()
         loss.backward()
@@ -89,8 +89,8 @@ with torch.no_grad():
     correct = 0
     total = 0
     for i, data in enumerate(X_test, 0):
-        labels = y_test.cuda()
-        outputs = net(X_test.cuda())
+        labels = y_test.to(device)
+        outputs = net(X_test.to(device))
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
